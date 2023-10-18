@@ -11,3 +11,4 @@ pandas
 st-gsheets-connection
 plotly.express
 pydeck
+openpyxl

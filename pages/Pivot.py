@@ -6,6 +6,7 @@ from streamlit_gsheets import GSheetsConnection
 url = 'https://docs.google.com/spreadsheets/d/1qKf_0z1CcBfFxCejbReILQHVLCV0znxQZc2ob2qjPGg/edit?usp=sharing'
 conn  = st.experimental_connection("gsheets", type=GSheetsConnection)
 dataumkm = conn.read(spreadsheet=url)
+type(dataumkm)
 dataumkm["NIK"] = dataumkm["NIK"].astype("string")
 dataumkm["No HP"] = dataumkm["No HP"].astype("string")
 dataumkm['RW'] = dataumkm['ALAMAT'].str[-5:]

@@ -10,8 +10,8 @@ import pandas as pd
 import openpyxl as opy
 
 st.set_page_config(
-    page_title="Hello",
-    page_icon="👋",
+    page_title="Beranda",
+    page_icon="🏠",
 )
 
 st.title("UMKM Desa Sekarwangi")

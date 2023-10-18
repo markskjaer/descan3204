@@ -1,8 +1,11 @@
 import streamlit as st
 import pandas as pd
+from streamlit_gsheets import GSheetsConnection
 
-### Import Data
-dataumkm = pd.read_excel("D:/1MAGANG BPS KAB BANDUNG/Olah Data Desa Cantik/Data UMKM Sekarwangi_ready.xlsx")
+### Import Data Lengkap
+url = 'https://docs.google.com/spreadsheets/d/1qKf_0z1CcBfFxCejbReILQHVLCV0znxQZc2ob2qjPGg/edit?usp=sharing'
+conn  = st.experimental_connection("gsheets", type=GSheetsConnection)
+dataumkm = conn.read(spreadsheet=url)
 type(dataumkm)
 dataumkm["NIK"] = dataumkm["NIK"].astype("string")
 dataumkm["No HP"] = dataumkm["No HP"].astype("string")

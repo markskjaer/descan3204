@@ -51,13 +51,13 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
             #Treat columns with < 10 unique values a s categorical
             if is_categorical_dtype(df[column]):
                 user_cat_input = right.multiselect(
-                    f"Values for {column}",
+                    f"Pilih Kategori dari {column}",
                     df[column].unique(),
                     default=list(df[column].unique()),
                     )
                 df = df[df[column].isin(user_cat_input)]
             elif is_numeric_dtype(df[column]):
-                st.write(f'Values for {column}')
+                st.write(f'Masukkan Rentang Nilai untuk {column}')
                 _min = st.text_input('Rentang Terkecil', float(df[column].min()))
                 _max = st.text_input('Rentang Tertinggi', float(df[column].max()))
                 _min = float(_min)

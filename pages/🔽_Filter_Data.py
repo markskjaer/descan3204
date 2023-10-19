@@ -9,6 +9,7 @@ dataumkm = conn.read(spreadsheet=url)
 type(dataumkm)
 dataumkm["NIK"] = dataumkm["NIK"].astype("string")
 dataumkm["No HP"] = dataumkm["No HP"].astype("string")
+dataumkm['ALAMAT'] = dataumkm['ALAMAT'].str.rstrip()
 dataumkm['RW'] = dataumkm['ALAMAT'].str[-5:]
 dataumkm['RT'] = dataumkm['ALAMAT'].str[-11:]
 df = dataumkm
@@ -49,23 +50,30 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
             left, right = st.columns((1,20))
             left.write("↳")
             #Treat columns with < 10 unique values a s categorical
-            if is_categorical_dtype(df[column]):
-                user_cat_input = right.multiselect(
-                    f"Pilih Kategori dari {column}",
-                    df[column].unique(),
-                    default=list(df[column].unique()),
-                    )
-                df = df[df[column].isin(user_cat_input)]
-            elif is_numeric_dtype(df[column]):
-                st.write(f'Masukkan Rentang Nilai untuk {column}')
+            if is_numeric_dtype(df[column]):
+                st.write(f'Values for {column}')
                 _min = st.text_input('Rentang Terkecil', float(df[column].min()))
                 _max = st.text_input('Rentang Tertinggi', float(df[column].max()))
                 _min = float(_min)
                 _max = float(_max)
-
+                #user_num_input = right.slider(
+                 #f"Values for {column}",
+                 #min_value=_min,
+                 #max_value=_max,
+                 #value=(_min, _max),
+                 #step=step,
+            #)
                 df= df[df[column].between(_min,_max)]
+            else:
+                user_cat_input = right.multiselect(
+                    f"Values for {column}",
+                    df[column].unique(),
+                    default=list(df[column].unique()),
+                    )
+                df = df[df[column].isin(user_cat_input)]
         return df
 filtered_df = filter_dataframe(df)
+
 ### Opsi Download Data
 @st.cache_data
 def convert_df(filtered_df):

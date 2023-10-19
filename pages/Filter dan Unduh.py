@@ -67,7 +67,7 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
                  value=(_min, _max),
                  step=step,
             )
-                df= df[df[column].between(*user_num_input)]
+                df= df[df[column].between(user_num_input)]
         return df
 filtered_df = filter_dataframe(df)
 

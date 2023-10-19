@@ -49,7 +49,7 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
             left, right = st.columns((1,20))
             left.write("↳")
             #Treat columns with < 10 unique values a s categorical
-            if is_categorical_dtype(df[column]) or df[column].nunique() < 50:
+            if is_categorical_dtype(df[column]):
                 user_cat_input = right.multiselect(
                     f"Values for {column}",
                     df[column].unique(),
@@ -67,7 +67,7 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
                  value=(_min, _max),
                  step=step,
             )
-                df= df[df[column].between(user_num_input)]
+                df= df[df[column].between(*user_num_input)]
         return df
 filtered_df = filter_dataframe(df)
 

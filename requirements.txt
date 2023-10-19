@@ -6,6 +6,7 @@ streamlit
 numpy
 pandas
 st-gsheets-connection
+is_numeric_dtype
 plotly.express
 pydeck
 openpyxl

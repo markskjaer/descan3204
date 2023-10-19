@@ -57,20 +57,15 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
                     )
                 df = df[df[column].isin(user_cat_input)]
             elif is_numeric_dtype(df[column]):
-                _min = float(df[column].min())
-                _max = float(df[column].max())
-                step = (_max - _min) / 100
-                user_num_input = right.slider(
-                 f"Values for {column}",
-                 min_value=_min,
-                 max_value=_max,
-                 value=(_min, _max),
-                 step=step,
-            )
-                df= df[df[column].between(*user_num_input)]
+                st.write(f'Values for {column}')
+                _min = st.text_input('Rentang Terkecil', float(df[column].min()))
+                _max = st.text_input('Rentang Tertinggi', float(df[column].max()))
+                _min = float(_min)
+                _max = float(_max)
+
+                df= df[df[column].between(_min,_max)]
         return df
 filtered_df = filter_dataframe(df)
-
 ### Opsi Download Data
 @st.cache_data
 def convert_df(filtered_df):

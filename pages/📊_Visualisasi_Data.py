@@ -43,6 +43,7 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
 
     modification_container = st.container()
+
     with modification_container:
         to_filter_columns = st.multiselect("Filter data berdasarkan", dataumkm.columns)
         for column in to_filter_columns:

@@ -26,6 +26,8 @@ from pandas.api.types import(
     is_object_dtype
     )
 
+st.subheader("Data Lengkap UMKM Desa Sekarwangi")
+st.write("Pilih kolom yang ingin ditampilkan")
 
 def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     """

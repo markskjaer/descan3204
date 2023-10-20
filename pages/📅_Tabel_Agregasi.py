@@ -60,13 +60,6 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
                 _max = st.text_input('Rentang Tertinggi', float(df[column].max()))
                 _min = float(_min)
                 _max = float(_max)
-                #user_num_input = right.slider(
-                 #f"Values for {column}",
-                 #min_value=_min,
-                 #max_value=_max,
-                 #value=(_min, _max),
-                 #step=step,
-            #)
                 df= df[df[column].between(_min,_max)]
             else:
                 user_cat_input = right.multiselect(

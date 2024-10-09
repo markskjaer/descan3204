@@ -4,7 +4,7 @@ from streamlit_gsheets import GSheetsConnection
 
 ### Import Data Lengkap
 url = 'https://docs.google.com/spreadsheets/d/1qKf_0z1CcBfFxCejbReILQHVLCV0znxQZc2ob2qjPGg/edit?usp=sharing'
-conn  = st.experimental_connection("gsheets", type=GSheetsConnection)
+conn  = st.connection("gsheets", type=GSheetsConnection)
 dataumkm = conn.read(spreadsheet=url)
 type(dataumkm)
 dataumkm["NIK"] = dataumkm["NIK"].astype("string")

@@ -53,8 +53,8 @@ six==1.16.0
 smmap==5.0.1
 sql-metadata==2.9.0
 sqlparse==0.4.4
-st-gsheets-connection==0.0.3
-streamlit==1.27.2
+st-gsheets-connection
+streamlit
 tenacity==8.2.3
 toml==0.10.2
 toolz==0.12.0
